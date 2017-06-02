@@ -1,5 +1,6 @@
 *.pyo
 *.pyc
+*.jpg
 .installed.cfg
 bin
 develop-eggs

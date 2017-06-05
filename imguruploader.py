@@ -1,3 +1,4 @@
+import os
 import sys
 import keyboard
 from PyQt4.QtGui import QPixmap, QApplication
@@ -19,14 +20,20 @@ def save_screen(screen_id):
     if screen_id == 1:
         QPixmap.grabWindow(desktop.winId(), x=-screen3, width=screen3).save('pictures/' + filename, 'jpg')
     elif screen_id == 2:
-        QPixmap.grabWindow(QApplication.desktop().winId()).save('pictures' + filename, 'jpg')
+        QPixmap.grabWindow(QApplication.desktop().winId()).save('pictures/' + filename, 'jpg')
     else:
         QPixmap.grabWindow(desktop.winId(), x=screen2).save('pictures/' + filename, 'jpg')
         
-
+    
 if __name__ == '__main__':
 
-    keyboard.add_hotkey('ctrl+shift+1', save_screen, args=[1])
-    keyboard.add_hotkey('ctrl+shift+2', save_screen, args=[2])
-    keyboard.add_hotkey('ctrl+shift+3', save_screen, args=[3])
-    keyboard.wait()
+    if sys.executable.endswith('pythonw.exe'):
+        sys.stdout = open(os.devnull, 'w');
+        sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-'+os.path.basename(sys.argv[0])), 'w')
+
+    keyboard.add_abbreviation('tsm', 'Team Solo Mid')
+    keyboard.add_hotkey('alt+shift+1', save_screen, args=[1])
+    keyboard.add_hotkey('alt+shift+2', save_screen, args=[2])
+    keyboard.add_hotkey('alt+shift+3', save_screen, args=[3])
+    print('starting to wait')
+    keyboard.wait('alt+shift+q')

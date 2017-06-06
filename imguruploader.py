@@ -3,6 +3,7 @@ import sys
 import keyboard
 from PyQt4.QtGui import QPixmap, QApplication
 from datetime import datetime
+from config import CLIENT_ID, CLIENT_SECRET
 
 
 def save_screen(screen_id):

@@ -45,18 +45,22 @@ def save_screen(screen_id):
     screens = detect_screens(desktop)
 
     print('screen_id: {}'.format(screen_id))
+    print('screen geo: {}'.format(screens[screen_id - 1]))
     
     picture = QPixmap.grabWidget(screen_widget, screens[screen_id - 1])
     print(picture)
-    picture.save('pictures/' + filename, 'jpg')
-        
+    success = picture.save('pictures/' + filename, 'jpg')
+    if success:
+        print('it succeeded')
+    else:
+        print('it failed')
 
-    uploaded_image = im.upload_image('pictures/' + filename, title='Thowaway Title')
+    '''uploaded_image = im.upload_image('pictures/' + filename, title='Thowaway Title')
     link = uploaded_image.link
 
     pyperclip.copy(link)
     with open('link_log.txt', 'a') as f:
-        f.write(filename + ' --> ' + link + '\n')
+        f.write(filename + ' --> ' + link + '\n')'''
         
     
 if __name__ == '__main__':

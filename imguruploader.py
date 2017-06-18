@@ -23,7 +23,7 @@ def detect_screens(desktop):
 def save_screen(screen_id):
 
     if screen_id > desktop.screenCount():
-        return
+        raise(IndexError)
     
     date = datetime.now()
     filename = date.strftime('%m-%d-%Y_%Hh-%Mm-%Ss.jpg')

@@ -57,6 +57,8 @@ if __name__ == '__main__':
         sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-'+os.path.basename(sys.argv[0])), 'w')
 
     for i in range(1, desktop.screenCount() + 1):
+        with open('key_log.txt', 'a') as f:
+            f.write('it worked for \'alt+shift+{}\'\n'.format(i))
         keyboard.add_hotkey('alt+shift+{}'.format(i), save_screen, args=[i])
          
     keyboard.wait('alt+shift+q')

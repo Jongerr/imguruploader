@@ -2,6 +2,7 @@
 *.pyc
 *.jpg
 .installed.cfg
+.vscode
 bin
 develop-eggs
 dist
@@ -13,3 +14,4 @@ lib
 lib64
 config.py
 link_log.txt
+key_log.txt
